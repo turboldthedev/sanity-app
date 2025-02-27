@@ -1,65 +1,49 @@
+"use client";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FeatureSection } from "@/types/LandingPage";
 
-export default function Features() {
+interface FeaturesProps {
+  data: FeatureSection; // Single FeatureSection object, not an array
+}
+
+export default function Features({ data }: FeaturesProps) {
+  // console.log(data);
+
+  const features = data.features.map((feature) =>
+    feature.description.split("\n").filter((item) => item.trim() !== "")
+  );
+
   return (
-    <section className="py-16 flex justify-center">
-      <div className=" px-4 ">
-        <div className="grid gap-2 md:grid-cols-2">
-          <div className="rounded-xl bg-gray-200 p-8">
-            <h2 className="mb-6 text-2xl font-bold">
-              For architects and interior designers
-            </h2>
-            <ul className="mb-6 space-y-3">
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Hundreds of leading brands</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>One site</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Order by midnight</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Everything in one box by 10:30 a.m.</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Free for architects and designers</span>
-              </li>
-            </ul>
-            <Button variant="outline">Join for free</Button>
-          </div>
-          <div className="rounded-xl bg-gray-200 p-8">
-            <h2 className="mb-6 text-2xl font-bold">For manufacturers</h2>
-            <ul className="mb-6 space-y-3">
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Thousands of new specifiers every month</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Leads on-demand</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Ultra-fast sample logistics</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Sample reclamation</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="h-5 w-5 text-gray-600" />
-                <span>Strong ROI and massive brand awareness</span>
-              </li>
-            </ul>
-            <Button variant="outline">Become a Brand Partner</Button>
-          </div>
+    <section className="py-12">
+      <div className="px-4 flex justify-center ">
+        <div className="grid gap-14 md:grid-cols-2">
+          {data.features.map((feature, index) => (
+            <div key={feature._key} className="rounded-xl bg-gray-100 p-8">
+              <h2 className="mb-6 text-2xl font-bold opacity-70">
+                {feature.title}
+              </h2>
+              <ul className="mb-2 space-y-2">
+                {features[index].map((item, itemIndex) => (
+                  <li
+                    key={itemIndex}
+                    className="flex items-center gap-2 opacity-80 text-sm">
+                    <Check className="h-5 w-5 text-gray-600" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              {/* Render the button for each feature */}
+              {feature.buttons?.map((button) => (
+                <Button
+                  key={button._key}
+                  variant="outline"
+                  className="mt-4 rounded-full">
+                  <a href={button.url || "#"}>{button.label}</a>
+                </Button>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -4,6 +4,11 @@ const BrandSection = {
   type: "object",
   fields: [
     {
+      name: "sectionTitle",
+      title: "Section Title",
+      type: "string",
+    },
+    {
       name: "heading",
       title: "Heading",
       type: "string",
@@ -12,6 +17,19 @@ const BrandSection = {
       name: "subheading",
       title: "Subheading",
       type: "text",
+    },
+    {
+      name: "coverImage",
+      title: "Cover Image",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt Text",
+          type: "string",
+        },
+      ],
     },
     {
       name: "brands",
