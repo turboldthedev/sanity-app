@@ -60,6 +60,11 @@ const WorkflowSection = {
       validation: (Rule: any) => Rule.length(2), // Ensure exactly 2 columns
     },
   ],
+  preview: {
+    select: {
+      title: "sectionTitle",
+    },
+  },
 };
 
 export default WorkflowSection;

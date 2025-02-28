@@ -64,6 +64,11 @@ const FeatureSection = {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "sectionTitle",
+    },
+  },
 };
 
 export default FeatureSection;

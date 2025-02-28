@@ -1,4 +1,4 @@
-const landingPage = {
+const LandingPage = {
   name: "landingPage",
   title: "Landing Page",
   type: "document",
@@ -24,4 +24,4 @@ const landingPage = {
   ],
 };
 
-export default landingPage;
+export default LandingPage;

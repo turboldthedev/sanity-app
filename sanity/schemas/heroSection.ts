@@ -14,7 +14,7 @@ const HeroSection = {
       type: "string",
       validation: (Rule: any) => Rule.required(),
     },
- 
+
     {
       name: "subheading",
       title: "Subheading",
@@ -71,15 +71,15 @@ const HeroSection = {
               },
             },
           ],
-          preview: {
-            select: {
-              title: "label",
-            },
-          },
         },
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "sectionTitle",
+    },
+  },
 };
 
 export default HeroSection;

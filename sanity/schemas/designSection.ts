@@ -33,6 +33,11 @@ const DesignSection = {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "sectionTitle",
+    },
+  },
 };
 
 export default DesignSection;

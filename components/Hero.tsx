@@ -11,10 +11,11 @@ export default function Hero({ data }: HeroProps) {
   // console.log(data);
 
   return (
-    <section className="py-10  flex justify-center">
+    <section className="py-10 flex justify-center">
       <div
         className="container px-4 py-8 rounded-lg text-center flex flex-col items-center justify-center"
-        style={{ backgroundColor: data.backgroundColor || "#97A2C2" }}>
+        style={{ backgroundColor: data.backgroundColor || "#97A2C2" }}
+      >
         <h1 className="mb-4 text-5xl font-bold tracking-tight text-white sm:text-6xl">
           {data.heading}
         </h1>
@@ -28,7 +29,8 @@ export default function Hero({ data }: HeroProps) {
               variant={button.variant || "secondary"} // Default to "secondary" if no variant
               size="lg"
               className="bg-white hover:bg-white/90 text-black"
-              asChild>
+              asChild
+            >
               <a href={button.url || "#"}>{button.label}</a>
             </Button>
           ))}

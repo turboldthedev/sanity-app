@@ -8,7 +8,6 @@ const TestimonialsSection = {
       name: "title",
       title: "Section Title",
       type: "string",
-  
     },
     {
       name: "heading",
@@ -64,29 +63,16 @@ const TestimonialsSection = {
               ],
             },
           ],
-          preview: {
-            select: {
-              title: "name",
-              subtitle: "title",
-              media: "image",
-            },
-            prepare(selection: {
-              title: string;
-              subtitle: string;
-              media: any;
-            }) {
-              return {
-                title: selection.title || "Unnamed Testimonial",
-                subtitle: selection.subtitle || "",
-                media: selection.media,
-              };
-            },
-          },
         },
       ],
       validation: (Rule: any) => Rule.min(1), // Ensure at least one testimonial
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+    },
+  },
 };
 
 export default TestimonialsSection;

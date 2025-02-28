@@ -43,6 +43,11 @@ const BrandSection = {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "sectionTitle",
+    },
+  },
 };
 
 export default BrandSection;

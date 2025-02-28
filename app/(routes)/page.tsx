@@ -13,8 +13,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      <main className="pt-40">
+      <main className="pt-28">
         {landingPage.pageSections.map((section) => {
           switch (section._type) {
             case "heroSection":
@@ -34,7 +33,6 @@ export default async function Home() {
           }
         })}
       </main>
-      <Footer />
     </div>
   );
 }
