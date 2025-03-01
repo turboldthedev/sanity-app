@@ -2,6 +2,7 @@ import BrandSection from "./brandSection";
 import ContactUsPage from "./contactUsPage";
 import DesignSection from "./designSection";
 import FeatureSection from "./featureSection";
+import Footer from "./footer";
 import HeroSection from "./heroSection";
 import LandingPage from "./landingPage";
 import Navbar from "./navbar";
@@ -17,6 +18,7 @@ const schemas = [
   DesignSection,
   TestimonialsSection,
   Navbar,
+  Footer,
   ContactUsPage,
 ];
 

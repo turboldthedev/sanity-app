@@ -1,88 +1,43 @@
+"use client";
 import Link from "next/link";
 import { Globe, Instagram, Linkedin } from "lucide-react";
+import { getFooter } from "@/sanity/sanity-utils";
+import { Footer as FooterType } from "@/types/Footer"; // Import the Footer type
 
-export default function Footer() {
+interface FooterProps {
+  data: FooterType;
+}
+
+export default async function Footer() {
+  const data = await getFooter();
+  console.log(data, "footer data");
+
   return (
     <footer className="w-full py-16 px-4 md:px-6 lg:px-8 bg-white border-t">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Explore Column */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-500">Explore</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Brands
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Boards
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Collections
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Events
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Dynamic Columns */}
+          {data.columns.map((column) => (
+            <div key={column._key} className="space-y-4">
+              <h3 className="text-sm font-medium text-gray-500">
+                {column.title}
+              </h3>
+              <ul className="space-y-3">
+                {column.links.map((link) => (
+                  <li key={link._key}>
+                    <Link
+                      href={link.url}
+                      className="text-gray-600 hover:text-gray-900"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-          {/* About Column */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-500">About</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  How it Works
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Sustainability
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Studio
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Support Column */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-500">Support</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  FAQ's
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-gray-900">
-                  Privacy and Legal Center
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Manufacturer Column */}
+          {/* Manufacturer Column (Hardcoded for now, can be made dynamic if needed) */}
           <div className="space-y-4">
             <h3 className="text-sm font-medium text-gray-500">
               Manufacturer? Let's Talk!
@@ -100,12 +55,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200">
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
-            <p className="text-sm text-gray-500">
-              © 2024 Material Bank. All rights reserved.
-            </p>
+            <p className="text-sm text-gray-500">{data.copyright}</p>
             <button className="flex items-center space-x-1 text-sm text-gray-500 hover:text-gray-900">
               <Globe size={16} />
-              <span>English</span>
+              <span>{data.language}</span>
             </button>
           </div>
 

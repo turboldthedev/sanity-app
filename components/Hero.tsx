@@ -8,8 +8,6 @@ interface HeroProps {
 }
 
 export default function Hero({ data }: HeroProps) {
-  // console.log(data);
-
   return (
     <section className="py-10 flex justify-center">
       <div

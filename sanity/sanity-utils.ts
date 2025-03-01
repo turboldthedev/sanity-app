@@ -1,4 +1,5 @@
 import { ContactUs } from "@/types/ContactUsPage";
+import { Footer } from "@/types/Footer";
 import { LandingPage } from "@/types/LandingPage";
 import { Navbar } from "@/types/Navbar";
 
@@ -119,4 +120,26 @@ export async function getContactUs(): Promise<ContactUs> {
   );
 
   return processAssets(data) as ContactUs;
+}
+
+export async function getFooter(): Promise<Footer> {
+  const data = await client.fetch<Footer>(
+    `*[_type == "footer"][0] {
+      _id,
+      _type,
+      columns[] {
+        _key,
+        title,
+        links[] {
+          _key,
+          label,
+          url
+        }
+      },
+      copyright,
+      language
+    }`
+  );
+
+  return processAssets(data) as Footer;
 }

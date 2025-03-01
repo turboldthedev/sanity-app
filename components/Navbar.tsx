@@ -6,15 +6,11 @@ import { Navbar as NavbarType } from "@/types/Navbar";
 import Image from "next/image";
 
 interface NavbarProps {
-  data: NavbarType | null;
+  data: NavbarType;
 }
 
 export default async function Navbar() {
   const data = await getNavbar(); // Fetch navbar data
-
-  if (!data) {
-    return null;
-  }
 
   return (
     <header className="w-full border-b fixed bg-white z-10">
