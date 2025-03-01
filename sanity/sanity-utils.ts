@@ -7,8 +7,8 @@ import imageUrlBuilder from "@sanity/image-url";
 import { createClient } from "next-sanity";
 
 const client = createClient({
-  projectId: "cobdwwy8",
-  dataset: "production",
+  projectId: process.env.SANITY_PROJECT_ID || "cobdwwy8",
+  dataset: process.env.SANITY_DATASET || "production",
   apiVersion: "2024-02-25",
   useCdn: false,
 });
